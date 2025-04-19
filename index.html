@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gửi đến người đặc biệt ✨</title>
+    <style>
+        :root {
+            --primary-color-light: #f8bbd0;
+            --primary-color-dark: #ce93d8;
+            --secondary-color-light: #bbdefb;
+            --secondary-color-dark: #9575cd;
+            --text-brown-dark: #5d4037;
+            --text-brown-light: #6d4c41;
+            --text-purple-dark: #4527a0;
+            --text-purple-light: #7e57c2;
+            --bg-soft-pink: #f9f3f3;
+            --bg-soft-purple: #f3e5f5;
+            --white: #ffffff;
+            --heart-color: #ff6b95;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --shadow-hover-color: rgba(0, 0, 0, 0.12);
+            --shadow-strong-color: rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-soft-pink);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(135deg, var(--primary-color-light), var(--secondary-color-light));
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            animation: subtle-gradient-animation 15s ease infinite;
+            background-size: 200% 200%;
+        }
+
+        @keyframes subtle-gradient-animation {
+             0% { background-position: 0% 50%; }
+             50% { background-position: 100% 50%; }
+             100% { background-position: 0% 50%; }
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--text-brown-dark);
+            margin-bottom: 15px;
+            animation: text-pop-in 1s ease-out forwards;
+        }
+
+        @keyframes text-pop-in {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-brown-light);
+            font-style: italic;
+            animation: text-fade-in 1.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes text-fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .memory-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: card-fade-in 0.6s ease-out forwards;
+        }
+
+        .memory-card:hover .memory-img {
+            transform: scale(1.1) rotate(3deg);
+        }
+
+        .memory-img.rotate {
+            animation: rotate-effect-continuous 30s linear infinite;
+        }
+
+        @keyframes rotate-effect-continuous {
+            0% {
+                transform: rotate(0deg) scale(1.08);
+            }
+            100% {
+                transform: rotate(360deg) scale(1.12);
+            }
+        }
+
+         @keyframes zoom-effect {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        @keyframes pan-effect {
+            0% { object-position: 20% 50%; transform: scale(1.15); }
+            100% { object-position: 80% 50%; transform: scale(1.15); }
+        }
+
+        @keyframes pulse-effect {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.85; transform: scale(1.03); }
+        }
+
+        @keyframes kenburns-effect {
+            0% { transform: scale(1.1) translate(0, 0); }
+            100% { transform: scale(1.25) translate(-15px, 5px); }
+        }
+
+        @keyframes fade-effect {
+            0% { filter: brightness(1) contrast(1); }
+            50% { filter: brightness(1.15) contrast(1.05) saturate(1.1); }
+            100% { filter: brightness(1) contrast(1); }
+        }
+
+        .memory-card:nth-child(1) { animation-delay: 0.1s; }
+        .memory-card:nth-child(2) { animation-delay: 0.2s; }
+        .memory-card:nth-child(3) { animation-delay: 0.3s; }
+        .memory-card:nth-child(4) { animation-delay: 0.4s; }
+        .memory-card:nth-child(5) { animation-delay: 0.5s; }
+        .memory-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes card-fade-in {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .memory-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 20px var(--shadow-hover-color);
+        }
+
+        .memory-img-container {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .memory-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .memory-card:hover .memory-img {
+            transform: scale(1.1) rotate(3deg);
+        }
+
+        .memory-img.zoom { animation: zoom-effect 10s infinite alternate ease-in-out; }
+
+        .memory-img.pan { animation: pan-effect 15s infinite alternate ease-in-out; }
+
+        .memory-img.pulse { animation: pulse-effect 4s infinite ease-in-out; }
+
+        .memory-img.rotate { animation: rotate-effect-continuous 30s linear infinite; }
+
+
+        .memory-img.kenburns { animation: kenburns-effect 20s infinite alternate ease-in-out; }
+
+        .memory-img.fade { animation: fade-effect 8s infinite alternate ease-in-out; }
+
+        .memory-text {
+            padding: 20px;
+        }
+
+        .memory-text h3 {
+            font-size: 1.3rem;
+            color: var(--text-brown-dark);
+            margin-bottom: 10px;
+        }
+
+        .memory-text p {
+            font-size: 1rem;
+            color: var(--text-brown-light);
+        }
+
+        .quote-section {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.9);
+            animation: section-pop-in 0.8s ease-out forwards 0.5s;
+        }
+
+        @keyframes section-pop-in {
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--text-purple-light);
+            margin-bottom: 25px;
+            position: relative;
+            padding: 0 20px;
+            display: inline-block;
+        }
+
+        .quote::before {
+            content: '“';
+            font-size: 3rem;
+            color: var(--primary-color-dark);
+            position: absolute;
+            left: -10px;
+            top: -10px;
+            opacity: 0.7;
+        }
+
+        .quote::after {
+            content: '”';
+            font-size: 3rem;
+            color: var(--primary-color-dark);
+            position: absolute;
+            right: -10px;
+            bottom: -20px;
+            opacity: 0.7;
+        }
+
+        .message {
+            background: linear-gradient(135deg, var(--primary-color-dark), var(--secondary-color-light));
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            animation: subtle-gradient-animation 18s ease infinite reverse;
+            background-size: 200% 200%;
+            opacity: 0;
+            transform: translateX(-30px);
+            animation: section-slide-in 0.8s ease-out forwards 0.7s;
+        }
+
+         @keyframes section-slide-in {
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .message h2 {
+            font-size: 1.8rem;
+            color: var(--text-purple-dark);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .message p {
+            font-size: 1.1rem;
+            margin-bottom: 18px;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--bg-soft-purple);
+            border-radius: 15px;
+            margin-top: 40px;
+            color: var(--text-brown-light);
+        }
+
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ff6b95' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E") no-repeat center center;
+            background-size: contain;
+            opacity: 0;
+            animation: float 10s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            10%, 90% {
+                opacity: 0.7;
+            }
+             50% {
+                transform: translateY(50vh) rotate(180deg) scale(1);
+            }
+            100% {
+                transform: translateY(-50px) rotate(360deg) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, var(--primary-color-light), var(--primary-color-dark));
+            color: var(--white);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px var(--shadow-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            animation: pulse-button 2s infinite ease-in-out;
+        }
+
+         @keyframes pulse-button {
+            0% { transform: scale(1); box-shadow: 0 4px 10px var(--shadow-color); }
+            50% { transform: scale(1.05); box-shadow: 0 6px 15px var(--shadow-hover-color); }
+            100% { transform: scale(1); box-shadow: 0 4px 10px var(--shadow-color); }
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 7px 15px var(--shadow-strong-color);
+            background: linear-gradient(135deg, var(--primary-color-dark), var(--secondary-color-dark));
+            animation-play-state: paused;
+        }
+
+        .btn-center {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; transform: scale(1); }
+            to { opacity: 0; transform: scale(0.8); }
+        }
+
+        .fade-out {
+            animation: fadeOut 0.5s forwards ease-out;
+            pointer-events: none;
+        }
+
+        .modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background: rgba(255, 255, 255, 0.98);
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px var(--shadow-strong-color);
+            z-index: 1001;
+            max-width: 90%;
+            width: 450px;
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .modal.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            header h1 { font-size: 2rem; }
+            .quote { font-size: 1.3rem; }
+            .message h2 { font-size: 1.6rem; }
+            .modal { width: 90%; padding: 25px; }
+        }
+
+        @media (max-width: 480px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+             header h1 { font-size: 1.8rem; }
+            .subtitle { font-size: 1rem; }
+            .quote { font-size: 1.1rem; }
+            .message h2 { font-size: 1.4rem; }
+            .message p { font-size: 1rem; }
+            .btn { padding: 10px 25px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts" id="hearts"></div>
+
+    <div class="container">
+        <header>
+            <h1>Dear my little sweet girl 💖</h1>
+            <p class="subtitle">Vì bạn iu xứng đáng với những điều tốt đẹp nhất trên đời ✨</p>
+        </header>
+
+        <div class="gallery">
+            <div class="memory-card">
+                <div class="memory-img-container">
+                    <img class="memory-img fade" src="anh1.jpg" alt="Nụ cười của Nhu Quỳnh" />
+                </div>
+                <div class="memory-text">
+                    <h3>Your smile 😊</h3>
+                    <p>Nụ cười của em iu làm tỏa sáng mọi thứ ☀️, vì vậy nếu có thể, hãy luôn giữ nó nhaaaa 🥰</p>
+                </div>
+            </div>
+
+            <div class="memory-card">
+                <div class="memory-img-container">
+                    <img class="memory-img fade" src="anh2.jpg" alt="Nhu Quỳnh xinh đẹp" />
+                </div>
+                <div class="memory-text">
+                    <h3>Xinh đẹp tuyệt vời 🌹</h3>
+                    <p>Như đóa hoa hồng có gai, NhuQuynh dũng cảm tự tin, yêu kiều mỹ miều 👑</p>
+                </div>
+            </div>
+
+            <div class="memory-card">
+                <div class="memory-img-container">
+                    <img class="memory-img fade" src="anh3.jpg" alt="Nhu Quỳnh tốt bụng" />
+                </div>
+                <div class="memory-text">
+                    <h3>Tốt bụng, tốt tính, thiện tâm ❤️</h3>
+                    <p>Đừng quên quan tâm cả bản thân nữa nhé ạaaaaaaaaaa 🤗</p>
+                </div>
+            </div>
+
+            <div class="memory-card">
+                <div class="memory-img-container">
+                    <img class="memory-img fade" src="anh4.jpg" alt="Nhu Quỳnh đáng yêu" />
+                </div>
+                <div class="memory-text">
+                    <h3>Vô tư hồn nhiên ôi thật đáng iu 😍</h3>
+                    <p>Nghĩ ít thoi nhe a iu của em, trường hợp nào cũm phải đặt cảm xúc của bản thân lên trên, em có gia đình, có tử, có past present future 🌟</p>
+                </div>
+            </div>
+
+            <div class="memory-card">
+                <div class="memory-img-container">
+                    <img class="memory-img fade" src="anhh5.jpg" alt="Nhu Quỳnh là ngôi sao" />
+                </div>
+                <div class="memory-text">
+                    <h3>Em là một ngôi sao ⭐</h3>
+                    <p>Em tinh tế, chăm chỉ, học giỏi, siêng năng, thông minh, lanh lợi 🧠, ôi kể 10000 từ cũm không hết điều tốt đẹp ở em ✨</p>
+                </div>
+            </div>
+
+            <div class="memory-card">
+                <div class="memory-img-container">
+                    <img class="memory-img fade" src="anh6.jpg" alt="Nhu Quỳnh là số 1" />
+                </div>
+                <div class="memory-text">
+                    <h3>You are the best 🥇</h3>
+                    <p>Sống "tồi" lên nhé em 😉 Em là số 1, luôn luôn vậy 💯</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="quote-section">
+            <p class="quote">Đừng để nỗi buồn hôm nay làm em mệt quá nhé. Khóc ít thoi nha cưng 😢🫂</p>
+            <p class="quote">Nhu Quynh hông chỉ xứng đáng với những điều tuyệt vời - mà Nhu Quynh chính là điều tuyệt vời đối với rất nhiều người 💖</p>
+        </div>
+
+        <div class="message">
+            <h2>Gửi người bạn thân yêu của at 💌</h2>
+            <p>At biết rằng hiện tại thị Bé đang trải qua những khoảng thời gian khó khăn với các mối quan hệ xung quanh. Nhưng không sao cạ, con người có up có down mới là con người mà, những thứ tốt đẹp sẽ đến nhanh thôi. 💪</p>
+
+            <p>✨ Lấp lánh như những vì sao <br>
+                🌟 Chiếu sáng bay trên trời cao <br>
+                💖 Thấp thoáng có bóng hình ai <br>
+                ☀️ Nụ cười tựa như nắng <br>
+                🌸 Dịu dàng và xinh xắn <br>
+            (Em xinh - Mono 🎶)</p>
+
+            <p> Những người thực sự xứng đáng với tình cảm của em sẽ ở lại, bất kể thử thách nào 🤝. Và a iu sẽ luôn ở đây, bên cạnh e, trong mọi hoàn cảnh. 🤗</p>
+
+            <p>Don't cry, my baby. Everything will be okay. 🙏❤️</p>
+        </div>
+
+        <div class="btn-center">
+            <button class="btn" id="surpriseBtn">Một bất ngờ nhỏ nè 🎁</button>
+        </div>
+
+        <footer>
+            <p>made with all my love ❤️ by at</p>
+            <p>NQ luôn xứng đáng được hạnh phúc! ✨👑</p>
+        </footer>
+    </div>
+
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="modal" id="surpriseModal">
+        <h2 style="color: var(--text-purple-dark); margin-bottom: 20px;">Love you so much! 🎉</h2>
+        <p style="font-size: 1.1rem; margin-bottom: 15px;">Thank you for being my friend! 💖</p>
+        <p style="font-size: 1.2rem; font-weight: bold; color: var(--text-purple-light); margin-bottom: 25px;">Hãy luôn vui vẻ và tỏa sáng theo cách của riêng em nhé! ✨🌟</p>
+        <button class="btn" id="closeBtn" style="margin-top: 10px; animation: none;">Cảm ơn cậu ♥</button>
+    </div>
+
+    <script>
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            if (!heartsContainer) return;
+            const heartCount = 25;
+
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = Math.random() * 6 + 7 + 's';
+                heart.style.animationDelay = Math.random() * 8 + 's';
+                heart.style.transform = `scale(${Math.random() * 0.6 + 0.6})`;
+                 const hue = Math.random() * 20 + 340;
+                 heart.style.filter = `hue-rotate(${hue}deg) saturate(1.5)`;
+
+                heartsContainer.appendChild(heart);
+
+                heart.addEventListener('animationend', () => {
+                    heart.remove();
+                });
+            }
+        }
+
+        function createConfetti() {
+            const colors = ['#f8bbd0', '#ce93d8', '#bbdefb', '#9575cd', '#f48fb1', '#fff176', '#ffcc80'];
+            const confettiCount = 150;
+            const container = document.body;
+
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                const size = Math.random() * 8 + 4;
+                const shape = Math.random() > 0.5 ? '50%' : '0';
+
+                confetti.style.position = 'fixed';
+                confetti.style.zIndex = '1002';
+                confetti.style.width = `${size}px`;
+                confetti.style.height = `${size}px`;
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.borderRadius = shape;
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = '-20px';
+                confetti.style.opacity = '1';
+                confetti.style.pointerEvents = 'none';
+
+                container.appendChild(confetti);
+
+                const destinationY = window.innerHeight + 50;
+                const rotation = Math.random() * 540 - 270;
+                const delay = Math.random() * 0.2;
+                const duration = Math.random() * 2500 + 2000;
+
+                const animation = confetti.animate(
+                    [
+                        { transform: `translateY(0) rotate(0deg)`, opacity: 1 },
+                        { opacity: 0.8 },
+                        { transform: `translateY(${destinationY}px) rotate(${rotation}deg)`, opacity: 0 }
+                    ],
+                    {
+                        duration: duration,
+                        easing: 'ease-out',
+                        delay: delay
+                    }
+                );
+
+                animation.onfinish = () => {
+                    confetti.remove();
+                };
+            }
+        }
+
+        const surpriseBtn = document.getElementById('surpriseBtn');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const surpriseModal = document.getElementById('surpriseModal');
+        const closeBtn = document.getElementById('closeBtn');
+
+        if (surpriseBtn && modalOverlay && surpriseModal && closeBtn) {
+            surpriseBtn.addEventListener('click', function() {
+                createConfetti();
+
+                modalOverlay.classList.add('show');
+                surpriseModal.classList.add('show');
+
+                this.classList.add('fade-out');
+                this.style.animation = 'fadeOut 0.5s forwards ease-out, pulse-button 2s infinite ease-in-out';
+                this.style.animationPlayState = 'running, paused';
+
+                 setTimeout(() => {
+                    this.style.visibility = 'hidden';
+                    this.style.animation = 'none';
+                }, 500);
+            });
+
+            closeBtn.addEventListener('click', function() {
+                modalOverlay.classList.remove('show');
+                surpriseModal.classList.remove('show');
+            });
+
+            modalOverlay.addEventListener('click', function() {
+                modalOverlay.classList.remove('show');
+                surpriseModal.classList.remove('show');
+            });
+        }
+
+        window.onload = function() {
+            createHearts();
+        };
+
+    </script>
+</body>
+</html>
